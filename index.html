@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Propositum</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tessellation/style.css" media="screen">
+    <link rel="stylesheet" href="style.css" media="screen">
+  </head>
+  <body>
+    <add-task-modal class="modal">
+      <div class="modal-content">
+        <div class="header">
+          <div id="form-header">Add Task:</div>
+          <span id="close-add-task" class="close">&times;</span>
+        </div>
+        <form id="add-task-form">
+          <label for="name">
+            Task Name:
+            <input type="text" id="name" name="name-input" class="input" required>
+          </label>
+          <label for="priority">
+            Priority:
+            <select id="priority" class="input">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+          </label>
+          <label for="due">
+            Due:
+            <input id="due" type="date" class="input">
+          </label>
+          <textarea id="description" rows="4" form="add-task-form" placeholder="Description" class="input"></textarea>
+          <label for="tags">
+            Tags:
+            <input id="tags" type="text" class="input">
+          </label>
+          <label for="completed">
+            Completed:
+            <input id="completed" type="checkbox" class="input">
+          </label>
+          <input id="submit" type="button" value="Submit">
+        </form>
+      </div>
+    </add-task-modal>
+    <div id="admin-panel">
+      <button id="add-task">Add Task</button>
+      <button id="logout">Logout</button>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <script>
+    let firebaseConfig = {
+      apiKey: "AIzaSyA8tfvU5mGKJMgFSSMsaJ2_KjND9TxK75o",
+      authDomain: "propositum-7578e.firebaseapp.com",
+      projectId: "propositum-7578e",
+      storageBucket: "propositum-7578e.appspot.com",
+      messagingSenderId: "609232453682",
+      appId: "1:609232453682:web:12c04a344d642d60807c2b",
+      measurementId: "G-X2BT3B62DY"
+    }
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig)
+    firebase.analytics()
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script type="module" src="index.js"></script>
+</html>

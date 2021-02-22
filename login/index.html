@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Propositum</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="firebase-auth-container"></div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <script>
+    let firebaseConfig = {
+      apiKey: "AIzaSyA8tfvU5mGKJMgFSSMsaJ2_KjND9TxK75o",
+      authDomain: "propositum-7578e.firebaseapp.com",
+      projectId: "propositum-7578e",
+      storageBucket: "propositum-7578e.appspot.com",
+      messagingSenderId: "609232453682",
+      appId: "1:609232453682:web:12c04a344d642d60807c2b",
+      measurementId: "G-X2BT3B62DY"
+    }
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig)
+    firebase.analytics()
+    let uiConfig =
+      { callbacks:
+        { signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+            console.log(authResult)
+            console.log(redirectUrl)
+            return true
+          }
+        }
+      , signInFlow: 'popup'
+      , signInSuccessUrl: '/propositum'
+      , signInOptions:
+        [ { provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+          , requireDisplayName: false
+          }
+        ]
+      }
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+        let ui = new firebaseui.auth.AuthUI(firebase.auth())
+        ui.start('#firebase-auth-container', uiConfig)
+    })
+  </script>
+</html>

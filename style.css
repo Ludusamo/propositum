@@ -1,0 +1,162 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat;
+}
+
+task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+task {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0.1em;
+
+  border: 0.2em solid hsl(0, 0%, 40%);
+  border-radius: 0.3em;
+
+  padding: 0.2em;
+}
+
+task.hoverable-task:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+task-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+task-title {
+  font-size: 1.5em;
+  font-family: Roboto;
+  flex-basis: 50%;
+}
+
+due-date {
+  grid-column: due / end;
+  justify-self: right;
+  flex-basis: 15%
+}
+
+completed {
+  justify-self: center;
+}
+
+priority {
+  justify-self: center;
+}
+
+.chip {
+  display: inline-block;
+  background: hsl(0, 0%, 80%);
+  padding: 0.25em 0.6em;
+  border-radius: 1em;
+  font-size: 1em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 2em;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 10em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4)
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0.5em;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 50em;
+}
+
+.close {
+  color: #aaaaaa;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+align-items: center;
+}
+
+input,
+select {
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid #ccc;
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.06);
+}
+
+button {
+  padding: 0.5em;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.25em;
+}
+
+@media all and (max-width:500px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width:800px) {
+  html {
+    font-size: 16px;
+  }
+  task-header,
+  form {
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
+}
+
+@media all and (min-width:1100px) {
+  html {
+    font-size: 18px;
+  }
+}
